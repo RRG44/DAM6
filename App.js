@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import {SafeAreaView, Text, Image, FlatList, StyleSheet, View} from 'react-native';
+import {SafeAreaView, Text, Image, FlatList, StyleSheet, View, Button} from 'react-native';
 
 const App = () => {
-  const logo = 'https://uptime.com/media/website_profiles/cuevana3.co.png';
+  let logo = 'https://pbs.twimg.com/profile_images/1593485576585744384/WdOWaK0M_200x200.png';
   const moviesList = [
     {
       id: 1,
@@ -13,13 +13,13 @@ const App = () => {
     {
       id: 2,
       name: 'Cars',
-      director: 'Disney',
+      director: 'Brian Fee y John Lasseter',
       url: 'https://m.media-amazon.com/images/M/MV5BMTg5NzY0MzA2MV5BMl5BanBnXkFtZTYwNDc3NTc2._V1_FMjpg_UX1000_.jpg',
     },
     {
       id: 3,
       name: 'Avengers',
-      director: 'Marvel',
+      director: 'Joss Whedon',
       url: 'https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg',
     },
     {
@@ -75,7 +75,7 @@ const App = () => {
           style={styles.logo}
           source={{uri: logo,}} 
         />
-        <Text style={styles.title}>Cuevana</Text>
+        <Text style={styles.title}>cuevana</Text>
       </View>
       <FlatList
         horizontal={true}
@@ -84,14 +84,15 @@ const App = () => {
         keyExtractor={(item) => item.id.toString()}
         renderItem={({item}) => (
           <View style={styles.movieContainer}>
-            <Text style={styles.textName}>{item.name}</Text>
             <Image
               style={styles.image}
               source={{
                 uri: item.url,
               }}
             />
+            <Text style={styles.textName}>{item.name}</Text>
             <Text style={styles.textDirector}>por {item.director}</Text>
+            <Button title='Watch now ▶️'/> 
           </View>
         )}
       />
@@ -101,7 +102,6 @@ const App = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
@@ -111,55 +111,65 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     fontWeight: '500',
-    marginTop: 15,
+    marginTop: 10,
     textAlign: 'center',
     color: '#ffffff',
   },
   image: {
-    width: 300,
-    height: 400,
+    width: 310,
+    height: 460,
     alignSelf: 'center', 
-    marginTop: 15, 
     marginBottom: 15,
   },
   textDirector:{
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 16,
+    fontWeight: '300',
     textAlign: 'center',
-    color: '#fff'
+    color: '#fff',
+    margin: 10,
+    marginBottom: 20,
   },
   textName:{
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: '400',
     textAlign: 'center',
-    color: '#fff'
+    color: '#fff',
   },
   flatListContainer:{
     flex: 1,
     backgroundColor : '#3F5573',
     padding: 20,
     margin:0,
-    paddingHorizontal:0,
+    paddingLeft: 10,
   },
   titleBar : {
     backgroundColor : '#222F40',
     width : '100%',
-    padding : '8%',
+    padding : '5%',
     textAlign : 'center',
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: '10%',
   },
   logo : 
   {
-    width : 30
+    width: 30,
+    height : 30,
+    margin: 10,
   },
   movieContainer : 
   {
     flex : 1,
-    backgroundColor: '#000',
+    backgroundColor: '#00000035',
     width: 335,
     alignItems: 'center',
     margin: 10,
     padding: 20,
     borderRadius:10,
+    marginHorizontal: 20,
+    marginLeft: 0,
   },
 });
 
