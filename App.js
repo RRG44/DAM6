@@ -72,24 +72,27 @@ const App = () => {
     <SafeAreaView style={styles.container}>
       <View style = {styles.titleBar}>
         <Image 
+          style={styles.logo}
           source={{uri: logo,}} 
         />
         <Text style={styles.title}>Cuevana</Text>
       </View>
       <FlatList
+        horizontal={true}
         style={styles.flatListContainer}
         data={movies}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({item}) => (
-         <>
-          <Image
-            style={styles.image}
-            source={{
-              uri: item.url,
-            }}
-          />
-          <Text style={styles.textName}>{item.name}</Text>
-          <Text style={styles.textDirector}>{item.director}</Text></>
+          <View style={styles.movieContainer}>
+            <Text style={styles.textName}>{item.name}</Text>
+            <Image
+              style={styles.image}
+              source={{
+                uri: item.url,
+              }}
+            />
+            <Text style={styles.textDirector}>por {item.director}</Text>
+          </View>
         )}
       />
     </SafeAreaView>
@@ -106,14 +109,15 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   title: {
-    fontSize: 24,
-    fontWeight: 'bold',
+    fontSize: 28,
+    fontWeight: '500',
     marginTop: 15,
     textAlign: 'center',
+    color: '#ffffff',
   },
   image: {
-    width: 200,
-    height: 300,
+    width: 300,
+    height: 400,
     alignSelf: 'center', 
     marginTop: 15, 
     marginBottom: 15,
@@ -122,23 +126,41 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
+    color: '#fff'
   },
   textName:{
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
+    color: '#fff'
   },
   flatListContainer:{
     flex: 1,
-    marginTop: 15,
-    marginBottom: 15, 
+    backgroundColor : '#3F5573',
+    padding: 20,
+    margin:0,
+    paddingHorizontal:0,
   },
   titleBar : {
-    backgroundColor : '#6C92E6',
+    backgroundColor : '#222F40',
     width : '100%',
     padding : '8%',
     textAlign : 'center',
-  }
+  },
+  logo : 
+  {
+    width : 30
+  },
+  movieContainer : 
+  {
+    flex : 1,
+    backgroundColor: '#000',
+    width: 335,
+    alignItems: 'center',
+    margin: 10,
+    padding: 20,
+    borderRadius:10,
+  },
 });
 
 export default App;
